@@ -1,0 +1,20 @@
+
+module my-gunicorn 1.0;
+
+require {
+	type admin_home_t;
+	type init_t;
+	type user_home_t;
+	class file { execute execute_no_trans ioctl open read };
+	class sock_file { create setattr unlink };
+}
+
+#============= init_t ==============
+allow init_t admin_home_t:file ioctl;
+
+#!!!! This avc is allowed in the current policy
+allow init_t admin_home_t:file { execute execute_no_trans open read };
+allow init_t admin_home_t:sock_file { create setattr unlink };
+
+#!!!! This avc is allowed in the current policy
+allow init_t user_home_t:file execute;

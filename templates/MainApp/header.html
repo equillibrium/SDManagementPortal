@@ -1,0 +1,24 @@
+{% load static %}
+<div class="header d-flex justify-content-center" xmlns="http://www.w3.org/1999/html">
+    <div class="logo">
+        <img src="{% static 'img/logo.jpg' %}" alt="Logo">
+    </div>
+    <div class="headernav">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link{% if title == 'Главная' %} active {% endif %}" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{% if title == 'APIManager' %} active {% endif %}" href="{% url 'APIManager' %}"><i class="fa-solid fa-user"></i> APIManager</a>
+            </li>
+            <li class="nav-item visually-hidden">
+                <a class="nav-link{% if title == 'Управление учетной записью в домене corp.tass.ru' %} active {% endif %}" href="{% url 'manageADUsers' %}"><i class="fa-solid fa-user"></i> Управление уз</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="admin/"><i class="fa-solid fa-folder-open"></i> Админка Django</a>
+            </li>
+        </ul>
+        <h1 class="text-muted fs-2 m-2">Портал администрирования пользовательского окружения</h1>
+    </div>
+</div>

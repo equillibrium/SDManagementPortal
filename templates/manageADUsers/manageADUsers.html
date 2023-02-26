@@ -1,0 +1,61 @@
+{% extends 'MainApp/layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load custom_tags %}
+
+{% block content %}
+
+{% crispy searchform %}
+
+{% if users %}
+<div class="container mt-3" style="opacity:0.8;">
+        {% for key, value in dict_users.items %}
+                <div class="card text-light bg-secondary mb-2">
+                        <div class="card-header">
+                                {% if i.useraccountcontrol == 512 %}
+                                        <p class="badge bg-success p-2 mb-0 me-2 float-start">Включен</p>
+                                {% else %}
+                                        <p class="badge bg-danger p-2 mb-0 me-2 float-start">Отключен</p>
+                                {% endif %}
+                                <h5 class="card-title text-light">
+                                        {{ i.samaccountname }}
+                                        <button class="btn-sm btn-warning float-end">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                </h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-light bg-secondary">
+                                        ФИО: {{ value }}
+                                </li>
+                                <li class="list-group-item text-light bg-secondary">
+                                        {{ i.distinguishedName }}
+                                </li>
+                                {% if i.mail %}
+                                        <li class="list-group-item text-light bg-secondary">
+                                                <p class="card-text">Почта: {{ i.mail }}</p>
+                                        </li>
+                                {% endif %}
+                                {% if i.description %}
+                                        <li class="list-group-item text-light bg-secondary">
+                                                <p class="card-text">
+                                                        {% for i in item.results %}{{i}}{% endfor %}
+                                                </p>
+                                        </li>
+                                {% endif %}
+                        </ul>
+                </div>
+        {% endfor %}
+</div>
+
+<div class="form2 d-flex justify-content-center">
+        {% crispy userform %}
+</div>
+{% endif %}
+
+<h3 class="text-muted fs-4 p-1 m-4 {% if users %}invisible{% endif %}" style="line-height:1.4;">
+        Воспользуйтесь поиском по ФИО или логину<br>Если результатов нет, попробуйте изменить запрос
+</h3>
+
+{% endblock %}

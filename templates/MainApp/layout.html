@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SDManagementPortal - {{ title }}</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'MainApp/css/main.css' %}">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body class="bg-dark text-muted">
+    {% include 'MainApp/header.html' %}
+    <main class="d-flex justify-content-center mt-5">
+        <div class="main_body {% if title == 'APIManager' %}w-50{%endif%}">
+                <h2 class="text-center text-muted fs-3 mb-4">{{ title }} {{ subtitle }}</h2>
+                {% block content %}
+                {% endblock %}
+        </div>
+    </main>
+</body>
+</html>

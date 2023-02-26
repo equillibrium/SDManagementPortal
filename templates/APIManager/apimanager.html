@@ -1,0 +1,15 @@
+{% extends 'MainApp/layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load custom_tags %}
+
+{% block content %}
+
+{% crispy searchformTASSOVETS %}
+
+<div class="content d-flex justify-content-center mt-5">
+    <p>{{ result }}</p>
+</div>
+
+{% endblock %}
